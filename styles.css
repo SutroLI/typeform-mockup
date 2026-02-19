@@ -60,13 +60,6 @@ body {
   width: auto;
 }
 
-.brand {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text);
-}
-
 .intro-text {
   color: var(--accent);
   font-size: 1.125rem;
@@ -129,33 +122,31 @@ body {
   font-size: 0.875rem;
 }
 
-/* Survey screen */
+/* Survey screen - all questions on one scrollable page */
 #survey {
   padding-top: 1rem;
-}
-
-.progress-bar {
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--accent);
-  transition: width 0.3s ease;
-  width: 0%;
+  overflow-y: auto;
 }
 
 .question-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+
+.question {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.question:last-of-type {
+  border-bottom: none;
+}
+
+.submit-area {
   max-width: 640px;
   margin: 0 auto;
+  padding: 1rem 0;
 }
 
 .question-title {
@@ -232,33 +223,6 @@ body {
   min-width: 120px;
 }
 
-.nav-area {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-
-.btn-nav {
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  background: transparent;
-  border: none;
-  color: var(--accent);
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.btn-nav:hover:not(:disabled) {
-  text-decoration: underline;
-}
-
-.btn-nav:disabled {
-  color: var(--text-muted);
-  cursor: not-allowed;
-}
-
 /* Thank you screen */
 #thankyou {
   justify-content: center;
@@ -280,10 +244,6 @@ body {
 @media (max-width: 640px) {
   .screen {
     padding: 1.5rem;
-  }
-
-  .brand {
-    font-size: 2rem;
   }
 
   .question-title {

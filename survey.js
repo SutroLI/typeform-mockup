@@ -1,17 +1,14 @@
 (function () {
   const config = typeof SURVEY_CONFIG !== "undefined" ? SURVEY_CONFIG : { questions: [] };
   const questions = config.questions || [];
-  let currentIndex = 0;
   const answers = {};
 
   const welcomeEl = document.getElementById("welcome");
   const surveyEl = document.getElementById("survey");
   const thankyouEl = document.getElementById("thankyou");
   const startBtn = document.getElementById("start-btn");
-  const backBtn = document.getElementById("back-btn");
-  const nextBtn = document.getElementById("next-btn");
+  const submitBtn = document.getElementById("submit-btn");
   const questionContainer = document.getElementById("question-container");
-  const progressFill = document.getElementById("progress-fill");
 
   function showScreen(id) {
     [welcomeEl, surveyEl, thankyouEl].forEach((el) => el.classList.remove("active"));
@@ -98,27 +95,16 @@
     return div;
   }
 
-  function updateQuestion() {
+  function renderAllQuestions() {
     questionContainer.innerHTML = "";
-    if (currentIndex >= questions.length) {
-      showScreen("thankyou");
-      return;
-    }
-    const q = questions[currentIndex];
-    questionContainer.appendChild(renderQuestion(q));
-    updateProgress();
-    backBtn.disabled = currentIndex === 0;
-    nextBtn.textContent = currentIndex === questions.length - 1 ? "Submit" : "Next →";
-  }
-
-  function updateProgress() {
-    const pct = questions.length ? ((currentIndex + 1) / questions.length) * 100 : 0;
-    progressFill.style.width = pct + "%";
+    questions.forEach((q) => {
+      questionContainer.appendChild(renderQuestion(q));
+    });
   }
 
   startBtn.addEventListener("click", () => {
     showScreen("survey");
-    updateQuestion();
+    renderAllQuestions();
   });
 
   document.addEventListener("keydown", (e) => {
@@ -127,20 +113,8 @@
     }
   });
 
-  backBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateQuestion();
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < questions.length - 1) {
-      currentIndex++;
-      updateQuestion();
-    } else {
-      showScreen("thankyou");
-    }
+  submitBtn.addEventListener("click", () => {
+    showScreen("thankyou");
   });
 
   if (config.participantCount) {
