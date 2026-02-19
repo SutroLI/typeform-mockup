@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sutro Li - Introductory Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Welcome screen -->
+    <section id="welcome" class="screen active">
+      <div class="welcome-content">
+        <div class="logo-area">
+          <img src="assets/logo_animation_final_half.png" alt="Sutro Li" class="logo">
+          <span class="brand">LI</span>
+        </div>
+        <p class="intro-text">Thank you for taking the time to review our introductory checklist. This will help us get to know you. This process will take about 5-10 minutes to complete.</p>
+        <p class="description-optional">Description (optional)</p>
+        <div class="start-area">
+          <button id="start-btn" class="btn-start">start</button>
+          <span class="keyboard-hint">press Enter ↲</span>
+        </div>
+      </div>
+      <footer class="welcome-footer">
+        <span class="participant-count">X people have filled this out</span>
+      </footer>
+    </section>
+
+    <!-- Survey screens -->
+    <section id="survey" class="screen">
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <div id="question-container" class="question-container"></div>
+      <div class="nav-area">
+        <button id="back-btn" class="btn-nav btn-back" disabled>← Back</button>
+        <button id="next-btn" class="btn-nav btn-next">Next →</button>
+      </div>
+    </section>
+
+    <!-- Thank you screen -->
+    <section id="thankyou" class="screen">
+      <div class="thankyou-content">
+        <h2>Thank you!</h2>
+        <p>Your responses have been recorded. (Mockup — no data submitted)</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="survey.js"></script>
+</body>
+</html>

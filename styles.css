@@ -1,0 +1,292 @@
+/* Sutro Li Survey Mockup - #1fb8e9 theme */
+:root {
+  --accent: #1fb8e9;
+  --accent-muted: rgba(31, 184, 233, 0.15);
+  --text: #000;
+  --text-muted: #6b7280;
+  --bg: #fff;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Welcome screen */
+#welcome {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-content {
+  max-width: 560px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+}
+
+.brand {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.intro-text {
+  color: var(--accent);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+
+.description-optional {
+  color: var(--accent);
+  opacity: 0.6;
+  font-size: 0.95rem;
+  margin: 0 0 2rem;
+}
+
+.start-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-start {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-start:hover {
+  opacity: 0.9;
+}
+
+.btn-start:active {
+  opacity: 0.8;
+}
+
+.keyboard-hint {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.welcome-footer {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.participant-count {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* Survey screen */
+#survey {
+  padding-top: 1rem;
+}
+
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.question-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.question-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.question-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.question-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.question-input.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.option-item {
+  margin-bottom: 0.5rem;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.option-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+}
+
+.option-btn.selected {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.yes-no-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.yes-no-buttons .option-btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+.nav-area {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-nav {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-nav:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.btn-nav:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Thank you screen */
+#thankyou {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.thankyou-content h2 {
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.thankyou-content p {
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .screen {
+    padding: 1.5rem;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+
+  .question-title {
+    font-size: 1.25rem;
+  }
+}
